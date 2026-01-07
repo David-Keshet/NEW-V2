@@ -8,24 +8,11 @@ const LoginPage = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    // Add Tailwind CSS CDN script
-    const script1 = document.createElement('script');
-    script1.src = 'https://cdn.tailwindcss.com?plugins=forms,container-queries';
-    script1.async = true;
-    script1.onload = () => {
-      console.log('Tailwind CSS loaded successfully');
-    };
-    script1.onerror = () => {
-      console.error('Failed to load Tailwind CSS');
-    };
-    document.head.appendChild(script1);
-
-    // Add Tailwind config script
-    const script2 = document.createElement('script');
-    script2.id = 'tailwind-config';
-    script2.textContent = `
-      if (typeof tailwind !== 'undefined') {
-        tailwind.config = {
+    // Wait for Tailwind to be available before configuring
+    const setupTailwind = () => {
+      if (typeof window.tailwind !== 'undefined') {
+        console.log('Configuring Tailwind...');
+        window.tailwind.config = {
           darkMode: "class",
           theme: {
             extend: {
@@ -54,9 +41,25 @@ const LoginPage = () => {
             },
           },
         };
+      } else {
+        console.log('Tailwind not yet available, retrying...');
+        setTimeout(setupTailwind, 100);
       }
-    `;
-    document.head.appendChild(script2);
+    };
+
+    // Add Tailwind CSS CDN script
+    const script1 = document.createElement('script');
+    script1.src = 'https://cdn.tailwindcss.com?plugins=forms,container-queries';
+    script1.async = true;
+    script1.onload = () => {
+      console.log('Tailwind CSS loaded successfully');
+      // Setup config after Tailwind loads
+      setTimeout(setupTailwind, 100);
+    };
+    script1.onerror = () => {
+      console.error('Failed to load Tailwind CSS');
+    };
+    document.head.appendChild(script1);
 
     // Add Google Fonts
     const fontLink1 = document.createElement('link');
@@ -656,6 +659,7 @@ const LoginPage = () => {
                     id="password"
                     type="password"
                     placeholder="******"
+                    autoComplete="current-password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
