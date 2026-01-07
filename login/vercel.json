@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "name": "crm-login-bms-2025",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "env": {
+    "SUPABASE_URL": "https://snyysiklfbaycdshgsif.supabase.co",
+    "SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNueXlzaWtsZmJheWNkc2hnc2lmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU4MTc0NzMsImV4cCI6MjA1MTM5MzQ3M30.sb_publishable_bObF3nLuIySciLbV7XDpMA_K1ZkE2XJ"
+  }
+}

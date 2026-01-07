@@ -1,0 +1,128 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Noto+Sans+Hebrew:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+/* Tailwind CSS via CDN styles */
+@import url('https://cdn.tailwindcss.com?plugins=forms,container-queries');
+
+/* Custom CSS Variables */
+:root {
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --background-light: #0f172a;
+  --background-off: #020617;
+  --background-dark: #0f172a;
+  --surface-dark: #1e293b;
+  --text-main: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --border-subtle: #334155;
+}
+
+/* Custom utility classes that match the original HTML */
+.bg-background-off { background-color: var(--background-off); }
+.bg-background-light { background-color: var(--background-light); }
+.bg-surface-dark { background-color: var(--surface-dark); }
+.bg-primary { background-color: var(--primary); }
+.hover\:bg-primary-hover:hover { background-color: var(--primary-hover); }
+
+.text-text-main { color: var(--text-main); }
+.text-primary { color: var(--primary); }
+.hover\:text-primary-hover:hover { color: var(--primary-hover); }
+
+.font-display { font-family: 'Manrope', 'Noto Sans Hebrew', sans-serif; }
+
+.border-slate-700 { border-color: #334155; }
+.border-white\/5 { border-color: rgba(255, 255, 255, 0.05); }
+.border-blue-500\/20 { border-color: rgba(59, 130, 246, 0.2); }
+.border-blue-400\/10 { border-color: rgba(96, 165, 250, 0.1); }
+.border-slate-800 { border-color: #1e293b; }
+.border-slate-700\/80 { border-color: rgba(51, 65, 85, 0.8); }
+
+.focus\:border-primary:focus { border-color: var(--primary); }
+.focus\:ring-primary\/40:focus { --tw-ring-color: rgba(59, 130, 246, 0.4); }
+
+.group-hover\:border-slate-600:hover { border-color: #475569; }
+.group-focus-within\:text-primary:focus-within { color: var(--primary); }
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a; 
+}
+::-webkit-scrollbar-thumb {
+  background: #334155; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569; 
+}
+
+/* Input Autofill Styles */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+  -webkit-box-shadow: 0 0 0 30px #1e293b inset !important;
+  -webkit-text-fill-color: #f1f5f9 !important;
+  caret-color: white;
+}
+
+/* Material Symbols */
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* RTL Support */
+[dir="rtl"] .rtl\:scale-x-100 {
+  transform: scaleX(-1);
+}
+
+/* Additional utility classes needed */
+.shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+.shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+.shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+.shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+.shadow-black\/50 { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+.shadow-blue-900\/20 { box-shadow: 0 1px 2px 0 rgba(30, 58, 138, 0.2); }
+.shadow-blue-900\/30 { box-shadow: 0 10px 15px -3px rgba(30, 58, 138, 0.3); }
+.shadow-blue-500\/20 { box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2); }
+
+.backdrop-blur-xl { backdrop-filter: blur(12px); }
+.backdrop-blur-md { backdrop-filter: blur(12px); }
+
+.ring-1 { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05); }
+.ring-white\/10 { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1); }
+.ring-blue-500\/30 { box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.3); }
+.ring-emerald-500\/30 { box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.3); }
+
+.aspect-\[16\/10\] { aspect-ratio: 16 / 10; }
+
+.opacity-50 { opacity: 0.5; }
+.opacity-60 { opacity: 0.6; }
+.hover\:grayscale-0:hover { filter: grayscale(0); }
+.hover\:scale-\[1\.01\]:hover { transform: scale(1.01); }
+.active\:scale-\[0\.98\]:active { transform: scale(0.98); }
+
+.border-dashed { border-style: dashed; }
+.border-l { border-left-width: 1px; }
+.border-b { border-bottom-width: 1px; }
+.border-t { border-top-width: 1px; }
