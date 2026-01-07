@@ -8,59 +8,14 @@ const LoginPage = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    // Simple Tailwind setup without complex retry logic
-    if (typeof window !== 'undefined') {
-      console.log('Setting up Tailwind...');
-      
-      // Add Tailwind config directly
-      const configScript = document.createElement('script');
-      configScript.textContent = `
-        if (typeof tailwind !== 'undefined') {
-          tailwind.config = {
-            darkMode: "class",
-            theme: {
-              extend: {
-                colors: {
-                  "primary": "#3b82f6",
-                  "primary-hover": "#2563eb",
-                  "background-light": "#0f172a",
-                  "background-off": "#020617",
-                  "background-dark": "#0f172a",
-                  "surface-dark": "#1e293b",
-                  "text-main": "#f1f5f9",
-                  "text-secondary": "#94a3b8",
-                  "border-subtle": "#334155",
-                },
-                fontFamily: {
-                  "display": ["Manrope", "Noto Sans Hebrew", "sans-serif"],
-                  "sans": ["Manrope", "Noto Sans Hebrew", "sans-serif"],
-                },
-                borderRadius: {
-                  "DEFAULT": "0.25rem",
-                  "lg": "0.5rem",
-                  "xl": "0.75rem",
-                  "2xl": "1rem",
-                  "full": "9999px"
-                },
-              },
-            },
-          };
-        }
-      `;
-      document.head.appendChild(configScript);
-    }
-
-    // Add Tailwind CSS CDN script
-    const script1 = document.createElement('script');
-    script1.src = 'https://cdn.tailwindcss.com?plugins=forms,container-queries';
-    script1.async = true;
-    script1.onload = () => {
-      console.log('Tailwind CSS loaded successfully');
+    // Add Tailwind CSS CDN script only
+    const script = document.createElement('script');
+    script.src = 'https://cdn.tailwindcss.com';
+    script.async = true;
+    script.onload = () => {
+      console.log('Tailwind CSS loaded');
     };
-    script1.onerror = () => {
-      console.error('Failed to load Tailwind CSS');
-    };
-    document.head.appendChild(script1);
+    document.head.appendChild(script);
 
     // Add Google Fonts
     const fontLink1 = document.createElement('link');
