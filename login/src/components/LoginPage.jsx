@@ -59,6 +59,8 @@ const LoginPage = () => {
     script1.onerror = () => {
       console.error('Failed to load Tailwind CSS');
     };
+    // Suppress production warning
+    script1.setAttribute('data-tailwind-version', '3.4.0');
     document.head.appendChild(script1);
 
     // Add Google Fonts
@@ -633,6 +635,7 @@ const LoginPage = () => {
                     id="username"
                     type="text"
                     placeholder="הכנס שם משתמש"
+                    autoComplete="username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required
