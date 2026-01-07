@@ -24,34 +24,36 @@ const LoginPage = () => {
     const script2 = document.createElement('script');
     script2.id = 'tailwind-config';
     script2.textContent = `
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "primary": "#3b82f6",
-              "primary-hover": "#2563eb",
-              "background-light": "#0f172a",
-              "background-off": "#020617",
-              "background-dark": "#0f172a",
-              "surface-dark": "#1e293b",
-              "text-main": "#f1f5f9",
-              "text-secondary": "#94a3b8",
-              "border-subtle": "#334155",
-            },
-            fontFamily: {
-              "display": ["Manrope", "Noto Sans Hebrew", "sans-serif"],
-              "sans": ["Manrope", "Noto Sans Hebrew", "sans-serif"],
-            },
-            borderRadius: {
-              "DEFAULT": "0.25rem",
-              "lg": "0.5rem",
-              "xl": "0.75rem",
-              "2xl": "1rem",
-              "full": "9999px"
+      if (typeof tailwind !== 'undefined') {
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#3b82f6",
+                "primary-hover": "#2563eb",
+                "background-light": "#0f172a",
+                "background-off": "#020617",
+                "background-dark": "#0f172a",
+                "surface-dark": "#1e293b",
+                "text-main": "#f1f5f9",
+                "text-secondary": "#94a3b8",
+                "border-subtle": "#334155",
+              },
+              fontFamily: {
+                "display": ["Manrope", "Noto Sans Hebrew", "sans-serif"],
+                "sans": ["Manrope", "Noto Sans Hebrew", "sans-serif"],
+              },
+              borderRadius: {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "2xl": "1rem",
+                "full": "9999px"
+              },
             },
           },
-        },
+        };
       }
     `;
     document.head.appendChild(script2);
