@@ -8,44 +8,47 @@ const LoginPage = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    // Wait for Tailwind to be available before configuring
-    const setupTailwind = () => {
-      if (typeof window.tailwind !== 'undefined') {
-        console.log('Configuring Tailwind...');
-        window.tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              colors: {
-                "primary": "#3b82f6",
-                "primary-hover": "#2563eb",
-                "background-light": "#0f172a",
-                "background-off": "#020617",
-                "background-dark": "#0f172a",
-                "surface-dark": "#1e293b",
-                "text-main": "#f1f5f9",
-                "text-secondary": "#94a3b8",
-                "border-subtle": "#334155",
-              },
-              fontFamily: {
-                "display": ["Manrope", "Noto Sans Hebrew", "sans-serif"],
-                "sans": ["Manrope", "Noto Sans Hebrew", "sans-serif"],
-              },
-              borderRadius: {
-                "DEFAULT": "0.25rem",
-                "lg": "0.5rem",
-                "xl": "0.75rem",
-                "2xl": "1rem",
-                "full": "9999px"
+    // Simple Tailwind setup without complex retry logic
+    if (typeof window !== 'undefined') {
+      console.log('Setting up Tailwind...');
+      
+      // Add Tailwind config directly
+      const configScript = document.createElement('script');
+      configScript.textContent = `
+        if (typeof tailwind !== 'undefined') {
+          tailwind.config = {
+            darkMode: "class",
+            theme: {
+              extend: {
+                colors: {
+                  "primary": "#3b82f6",
+                  "primary-hover": "#2563eb",
+                  "background-light": "#0f172a",
+                  "background-off": "#020617",
+                  "background-dark": "#0f172a",
+                  "surface-dark": "#1e293b",
+                  "text-main": "#f1f5f9",
+                  "text-secondary": "#94a3b8",
+                  "border-subtle": "#334155",
+                },
+                fontFamily: {
+                  "display": ["Manrope", "Noto Sans Hebrew", "sans-serif"],
+                  "sans": ["Manrope", "Noto Sans Hebrew", "sans-serif"],
+                },
+                borderRadius: {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "2xl": "1rem",
+                  "full": "9999px"
+                },
               },
             },
-          },
-        };
-      } else {
-        console.log('Tailwind not yet available, retrying...');
-        setTimeout(setupTailwind, 100);
-      }
-    };
+          };
+        }
+      `;
+      document.head.appendChild(configScript);
+    }
 
     // Add Tailwind CSS CDN script
     const script1 = document.createElement('script');
@@ -53,16 +56,10 @@ const LoginPage = () => {
     script1.async = true;
     script1.onload = () => {
       console.log('Tailwind CSS loaded successfully');
-      // Setup config after Tailwind loads
-      setTimeout(setupTailwind, 100);
     };
     script1.onerror = () => {
       console.error('Failed to load Tailwind CSS');
     };
-    // Suppress production warning
-    script1.setAttribute('data-tailwind-version', '3.4.0');
-    // Suppress CDN warning
-    script1.setAttribute('data-tailwind-environment', 'production');
     document.head.appendChild(script1);
 
     // Add Google Fonts
