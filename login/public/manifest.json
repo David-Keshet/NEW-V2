@@ -1,0 +1,40 @@
+{
+  "short_name": "CRM BMS 2025",
+  "name": "CRM Login - BMS 2025",
+  "description": "מערכת ניהול עסקית מתקדמת - דף התחברות",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#020617",
+  "background_color": "#020617",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "he",
+  "dir": "rtl",
+  "categories": ["business", "productivity"],
+  "shortcuts": [
+    {
+      "name": "התחברות מהירה",
+      "short_name": "התחברות",
+      "description": "גישה מהירה למערכת",
+      "url": "/",
+      "icons": [{ "src": "favicon.ico", "sizes": "192x192" }]
+    }
+  ]
+}
