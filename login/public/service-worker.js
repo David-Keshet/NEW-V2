@@ -1,8 +1,14 @@
 const CACHE_NAME = 'crm-login-bms-2025-v1';
 
+// Log all events for debugging
+self.addEventListener('message', event => {
+  console.log('SW Message:', event.data);
+});
+
 // Install Service Worker
 self.addEventListener('install', event => {
   console.log('SW: Installing');
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
@@ -29,21 +35,21 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch Event - Network First, Cache Fallback
+// Fetch Event - Network Only (no caching for dynamic content)
 self.addEventListener('fetch', event => {
+  // Skip caching for dynamic content
+  if (event.request.url.includes('supabase') || 
+      event.request.url.includes('api') ||
+      event.request.method !== 'GET') {
+    return fetch(event.request);
+  }
+  
   event.respondWith(
     fetch(event.request)
       .then(response => {
-        // Cache successful responses
-        if (response.status === 200) {
-          const responseClone = response.clone();
-          caches.open(CACHE_NAME)
-            .then(cache => cache.put(event.request, responseClone));
-        }
         return response;
       })
       .catch(() => {
-        // Return cached version if network fails
         return caches.match(event.request);
       })
   );
