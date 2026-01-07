@@ -138,6 +138,16 @@
             }
         });
         
+        // Suppress banner warning
+        window.addEventListener('DOMContentLoaded', () => {
+            if ('serviceWorker' in navigator && 'PushManager' in window) {
+                // Suppress banner warning by calling preventDefault early
+                window.addEventListener('beforeinstallprompt', (e) => {
+                    e.preventDefault();
+                });
+            }
+        });
+        
         document.addEventListener('DOMContentLoaded', () => {
             const installBtn = document.getElementById('install-prompt');
             if (installBtn) {

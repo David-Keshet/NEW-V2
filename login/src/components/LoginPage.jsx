@@ -61,6 +61,8 @@ const LoginPage = () => {
     };
     // Suppress production warning
     script1.setAttribute('data-tailwind-version', '3.4.0');
+    // Suppress CDN warning
+    script1.setAttribute('data-tailwind-environment', 'production');
     document.head.appendChild(script1);
 
     // Add Google Fonts
